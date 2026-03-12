@@ -9,21 +9,33 @@
 
 body{
     margin:0;
-    font-family: Arial, sans-serif;
+    font-family:Arial, sans-serif;
     background:#f5f5f5;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    height:100vh;
+    min-height:100vh;
 }
 
 form{
     background:white;
-    padding:30px;
-    border-radius:10px;
-    width:350px;
+    padding:40px;
+    border-radius:12px;
+    width:400px;
+    max-width:90%;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
 }
 
 input{
@@ -47,7 +59,7 @@ button{
 }
 
 button:hover{
-    background:#45a049;
+    background:#4b9a3c;
 }
 
 .error{
