@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arthur Veloso | Student ID - 77933</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arthur Veloso | Student ID - 77933</title>
 
 <style>
+
+/* Page layout */
 
 body{
     margin:0;
@@ -19,6 +23,8 @@ body{
     min-height:100vh;
 }
 
+/* Form container */
+
 form{
     background:white;
     padding:40px;
@@ -28,15 +34,21 @@ form{
     box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
+/* Title */
+
 h1{
     text-align:center;
     margin-bottom:30px;
 }
 
+/* Labels */
+
 label{
     display:block;
     margin-top:15px;
 }
+
+/* Inputs */
 
 input{
     width:100%;
@@ -46,6 +58,8 @@ input{
     border:1px solid #ccc;
     border-radius:5px;
 }
+
+/* Button */
 
 button{
     width:100%;
@@ -62,17 +76,21 @@ button:hover{
     background:#4b9a3c;
 }
 
+/* Error messages */
+
 .error{
-color:red;
-font-size:14px;
-display:none;
+    color:red;
+    font-size:14px;
+    display:none;
 }
 
+/* Success message */
+
 .success{
-text-align:center;
-font-size:20px;
-color:green;
-display:none;
+    text-align:center;
+    font-size:20px;
+    color:green;
+    display:none;
 }
 
 </style>
@@ -83,7 +101,7 @@ display:none;
 
 <form id="loginForm">
 
-<h2>Student Login</h2>
+<h1>Student Login</h1>
 
 <label>First Name</label>
 <input type="text" id="firstName">
@@ -115,87 +133,94 @@ Login successful ✅
 
 <script>
 
-// Select form
+/* Select the form element */
 const form = document.getElementById("loginForm");
 
-// Select inputs
+/* Select input fields */
 const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const studentId = document.getElementById("studentId");
 
-// Select error messages
+/* Select error message elements */
 const firstNameError = document.getElementById("firstNameError");
 const lastNameError = document.getElementById("lastNameError");
 const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const studentIdError = document.getElementById("studentIdError");
 
-// Success message
+/* Success message element */
 const successMessage = document.getElementById("successMessage");
 
-// Listen for form submission
+/* Listen for form submission */
+
 form.addEventListener("submit", function(event){
 
-// Prevent page reload
-event.preventDefault();
+    /* Prevent page reload */
+    event.preventDefault();
 
-let isValid = true;
+    let isValid = true;
 
-// First name validation
-if(firstName.value === ""){
-firstNameError.style.display = "block";
-isValid = false;
-}else{
-firstNameError.style.display = "none";
-}
+    /* First name validation */
 
-// Last name validation
-if(lastName.value === ""){
-lastNameError.style.display = "block";
-isValid = false;
-}else{
-lastNameError.style.display = "none";
-}
+    if(firstName.value.trim() === ""){
+        firstNameError.style.display = "block";
+        isValid = false;
+    }else{
+        firstNameError.style.display = "none";
+    }
 
-// Email validation
-if(email.value === ""){
-emailError.style.display = "block";
-isValid = false;
-}else{
-emailError.style.display = "none";
-}
+    /* Last name validation */
 
-// Password validation
-if(password.value.length < 6){
-passwordError.style.display = "block";
-isValid = false;
-}else{
-passwordError.style.display = "none";
-}
+    if(lastName.value.trim() === ""){
+        lastNameError.style.display = "block";
+        isValid = false;
+    }else{
+        lastNameError.style.display = "none";
+    }
 
-// Student ID validation
-if(studentId.value === ""){
-studentIdError.style.display = "block";
-isValid = false;
-}else{
-studentIdError.style.display = "none";
-}
+    /* Email validation */
 
-// If form is valid
-if(isValid){
+    if(!email.value.includes("@")){
+        emailError.style.display = "block";
+        isValid = false;
+    }else{
+        emailError.style.display = "none";
+    }
 
-// Reset form
-form.reset();
+    /* Password validation */
 
-// Hide form
-form.style.display = "none";
+    if(password.value.length < 6){
+        passwordError.style.display = "block";
+        isValid = false;
+    }else{
+        passwordError.style.display = "none";
+    }
 
-// Show success message
-successMessage.style.display = "block";
+    /* Student ID validation */
 
-}
+    if(studentId.value.trim() === ""){
+        studentIdError.style.display = "block";
+        isValid = false;
+    }else{
+        studentIdError.style.display = "none";
+    }
+
+    /* If the form is valid */
+
+    if(isValid){
+
+        /* Clear form fields */
+        form.reset();
+
+        /* Hide the form */
+        form.style.display = "none";
+
+        /* Show success message */
+        successMessage.style.display = "block";
+
+    }
 
 });
 
