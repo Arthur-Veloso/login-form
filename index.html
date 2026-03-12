@@ -88,5 +88,93 @@ display:none;
 Login successful ✅
 </div>
 
+<script>
+
+// Select form
+const form = document.getElementById("loginForm");
+
+// Select inputs
+const firstName = document.getElementById("firstName");
+const lastName = document.getElementById("lastName");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const studentId = document.getElementById("studentId");
+
+// Select error messages
+const firstNameError = document.getElementById("firstNameError");
+const lastNameError = document.getElementById("lastNameError");
+const emailError = document.getElementById("emailError");
+const passwordError = document.getElementById("passwordError");
+const studentIdError = document.getElementById("studentIdError");
+
+// Success message
+const successMessage = document.getElementById("successMessage");
+
+// Listen for form submission
+form.addEventListener("submit", function(event){
+
+// Prevent page reload
+event.preventDefault();
+
+let isValid = true;
+
+// First name validation
+if(firstName.value === ""){
+firstNameError.style.display = "block";
+isValid = false;
+}else{
+firstNameError.style.display = "none";
+}
+
+// Last name validation
+if(lastName.value === ""){
+lastNameError.style.display = "block";
+isValid = false;
+}else{
+lastNameError.style.display = "none";
+}
+
+// Email validation
+if(email.value === ""){
+emailError.style.display = "block";
+isValid = false;
+}else{
+emailError.style.display = "none";
+}
+
+// Password validation
+if(password.value.length < 6){
+passwordError.style.display = "block";
+isValid = false;
+}else{
+passwordError.style.display = "none";
+}
+
+// Student ID validation
+if(studentId.value === ""){
+studentIdError.style.display = "block";
+isValid = false;
+}else{
+studentIdError.style.display = "none";
+}
+
+// If form is valid
+if(isValid){
+
+// Reset form
+form.reset();
+
+// Hide form
+form.style.display = "none";
+
+// Show success message
+successMessage.style.display = "block";
+
+}
+
+});
+
+</script>
+
 </body>
 </html>
